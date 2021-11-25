@@ -1,14 +1,16 @@
 <template>
 	<div id="app">
     <Header />
+    <Grid />
   </div>
 </template>
 
 <script>
+import Grid from './components/Grid.vue';
 import Header from './components/Header.vue';
 export default {
 	name: "App",
-	components: {Header},
+	components: {Header,Grid},
 };
 </script>
 
