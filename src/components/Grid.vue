@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import Card from "./Card.vue";
 export default {
 	components: { Card },
