@@ -3,13 +3,9 @@
 		<div class="logo">
 			<a href="#"><img src="../assets/logo.png" alt="brand-logo" /></a>
 		</div>
-		{{ valueSelected }}
 		<select v-model="valueSelected" @change="$emit('filterFor', valueSelected)">
 			<option value="">All</option>
-			<option value="rock">Rock</option>
-			<option value="pop">Pop</option>
-			<option value="jazz">Jazz</option>
-			<option value="metal">Metal</option>
+			<option :value="d.genre" v-for="(d, index) in unique" :key="`opt-${index}`">{{ d.genre }}</option>
 		</select>
 	</header>
 </template>
@@ -17,6 +13,14 @@
 <script>
 export default {
 	name: "Header",
+	props: {
+		data: Array,
+	},
+	computed: {
+		unique() {
+			return this.data.filter((el, i, arr) => arr.findIndex((v) => v.genre === el.genre) === i);
+		},
+	},
 	data() {
 		return {
 			valueSelected: "",

@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<Header @filterFor="filterGenre" />
+		<Header :data="data" @filterFor="filterGenre" />
 		<Grid :data="data" :filter="currentValueToFilter" />
 	</div>
 </template>
