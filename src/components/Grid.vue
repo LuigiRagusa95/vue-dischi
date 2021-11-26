@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="container">
-			<div class="container-box" v-if="data">
+			<div class="container-box" v-if="data" @getGenre="getValue">
 				<template v-for="(album, index) in data">
 					<Card :key="`card-${index}`" :poster="album.poster" :title="album.title" :author="album.author" :year="album.year" :genre="album.genre" />
 				</template>
@@ -19,13 +19,19 @@ export default {
 	name: "Grid",
 	props: {
 		data: Array,
+		filter: String,
 	},
 	data() {
 		return {
-			list: null,
+			currentFilter: "",
 		};
 	},
-	methods: {},
+	methods: {
+		getValue(genre) {
+			this.currentFilter = genre;
+			console.log(this.currentFilter);
+		},
+	},
 };
 </script>
 

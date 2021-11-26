@@ -3,15 +3,29 @@
 		<div class="logo">
 			<a href="#"><img src="../assets/logo.png" alt="brand-logo" /></a>
 		</div>
-		<Select />
+		<select v-model="valueSelected" @change="$emit('getGenre', valueSelected)">
+			<option value="">All</option>
+			<option value="rock">Rock</option>
+			<option value="pop">Pop</option>
+			<option value="jazz">Jazz</option>
+			<option value="metal">Metal</option>
+		</select>
 	</header>
 </template>
 
 <script>
-import Select from "./Select.vue";
 export default {
-	components: { Select },
 	name: "Header",
+	data() {
+		return {
+			valueSelected: "",
+		};
+	},
+	methods: {
+		getValue() {
+			console.log(this.valueSelected);
+		},
+	},
 };
 </script>
 
