@@ -18,7 +18,7 @@ export default {
 	},
 	computed: {
 		unique() {
-			return this.data.filter((el, i, arr) => arr.findIndex((v) => v.genre === el.genre) === i);
+			return this.data ? this.data.filter((el, i, arr) => arr.findIndex((v) => v.genre === el.genre) === i) : [];
 		},
 	},
 	data() {
