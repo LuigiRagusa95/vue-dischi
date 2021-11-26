@@ -1,8 +1,8 @@
 <template>
 	<section>
 		<div class="container">
-			<div class="container-box" v-if="list">
-				<template v-for="(album, index) in list">
+			<div class="container-box" v-if="data">
+				<template v-for="(album, index) in data">
 					<Card :key="`card-${index}`" :poster="album.poster" :title="album.title" :author="album.author" :year="album.year" :genre="album.genre" />
 				</template>
 			</div>
@@ -12,30 +12,20 @@
 </template>
 
 <script>
-import axios from "axios";
-
 import Card from "./Card.vue";
 import Loader from "./Loader.vue";
 export default {
 	components: { Card, Loader },
 	name: "Grid",
+	props: {
+		data: Array,
+	},
 	data() {
 		return {
 			list: null,
 		};
 	},
-	methods: {
-		getData() {
-			setTimeout(() => {
-				axios.get("https://flynn.boolean.careers/exercises/api/array/music").then((response) => {
-					this.list = response.data.response;
-				});
-			}, 2000);
-		},
-	},
-	created() {
-		this.getData();
-	},
+	methods: {},
 };
 </script>
 
