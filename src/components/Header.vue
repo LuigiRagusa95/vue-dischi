@@ -3,7 +3,8 @@
 		<div class="logo">
 			<a href="#"><img src="../assets/logo.png" alt="brand-logo" /></a>
 		</div>
-		<select v-model="valueSelected" @change="$emit('getGenre', valueSelected)">
+		{{ valueSelected }}
+		<select v-model="valueSelected" @change="$emit('filterFor', valueSelected)">
 			<option value="">All</option>
 			<option value="rock">Rock</option>
 			<option value="pop">Pop</option>
@@ -20,11 +21,6 @@ export default {
 		return {
 			valueSelected: "",
 		};
-	},
-	methods: {
-		getValue() {
-			console.log(this.valueSelected);
-		},
 	},
 };
 </script>

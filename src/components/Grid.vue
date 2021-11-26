@@ -1,8 +1,8 @@
 <template>
 	<section>
 		<div class="container">
-			<div class="container-box" v-if="data" @getGenre="getValue">
-				<template v-for="(album, index) in data">
+			<div class="container-box" v-if="data">
+				<template v-for="(album, index) in filterFor">
 					<Card :key="`card-${index}`" :poster="album.poster" :title="album.title" :author="album.author" :year="album.year" :genre="album.genre" />
 				</template>
 			</div>
@@ -22,16 +22,17 @@ export default {
 		filter: String,
 	},
 	data() {
-		return {
-			currentFilter: "",
-		};
+		return {};
 	},
-	methods: {
-		getValue(genre) {
-			this.currentFilter = genre;
-			console.log(this.currentFilter);
+	computed: {
+		filterFor() {
+			if (this.filter === "") {
+				return this.data;
+			}
+			return this.data.filter((d) => d.genre.toLowerCase().match(this.filter.toLowerCase()));
 		},
 	},
+	methods: {},
 };
 </script>
 
